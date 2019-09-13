@@ -1,0 +1,24 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  username: root
+  password: root
+  host: db
+  port: 3306
+  strict: false
+  variables:
+    sql_mode: TRADITIONAL
+
+development:
+  <<: *default
+  database: diary_development
+
+test:
+  <<: *default
+  database: diary_test
+
+production:
+  <<: *default
+  database: diary_production
+  username: diary
+  password: <%= ENV['DIARY_DATABASE_PASSWORD'] %>
